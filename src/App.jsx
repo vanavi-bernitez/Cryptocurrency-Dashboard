@@ -16,7 +16,7 @@ function App() {
         <h5>CRYPTOCURRENCY</h5>
         <p>Details</p>
 
-        <Markets />
+        {/* <Markets /> */}
       </div>
     </div>
   );

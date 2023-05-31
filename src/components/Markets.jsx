@@ -4,11 +4,17 @@ import { getMarket } from "../helpers/getCrypto";
 
 const Markets = () => {
   const [data, setData] = useState([]);
+  const [coinId, setCoinId] = useState("");
 
   const fillCoinCard = async () => {
     const coinsData = await getMarket();
     setData(coinsData);
-    console.log(data);
+    console.log(data.sparkline);
+  };
+
+  const handleOnClickImage = (event) => {
+    setCoinId(event.target.id);
+    console.log(coinId);
   };
 
   if (data.length === 0) fillCoinCard();
@@ -22,6 +28,7 @@ const Markets = () => {
             id={`${coin.symbol}`}
             src={coin.image}
             alt="crypto symbol"
+            onClick={handleOnClickImage}
           />
         </div>
 

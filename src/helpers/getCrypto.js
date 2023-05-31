@@ -1,7 +1,7 @@
 const getMarket = async () => {
   try {
     const response = await fetch(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=6&page=1&sparkline=false&locale=en`
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=true&locale=en`
     );
     const market = await response.json();
     const coinsData = market.map((coin) => {
@@ -11,6 +11,7 @@ const getMarket = async () => {
         name: coin.name,
         image: coin.image,
         price: coin.current_price,
+        sparkline: coin.sparkline_in_7d.price,
       };
     });
 

@@ -92,7 +92,7 @@ body {
 
 .infoContainer {
   display: flex;
-  justify-content: left;
+  justify-content: center;
   align-items: center;
   width: 100%;
   height: min-content;
@@ -101,8 +101,8 @@ body {
 .logoContainer {
   display: grid;
   place-items: center;
-  width: 10%;
-  height: 10%;
+  width: 15%;
+  height: 15%;
 }
 
 .coinLogo {
@@ -110,8 +110,18 @@ body {
   height: 100%;
 }
 
+.coinInformation {
+  width: 65%;
+  margin-left: 0.5em;
+}
+
+
 .nameValue {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
+}
+
+.nameValue h3 {
+  margin: 0;
 }
