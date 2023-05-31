@@ -1,38 +1,117 @@
+body {
+  display: grid;
+  place-items: center;
+  margin-top: 6em;
+  background-color: #b6bdcb;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  width: 60vw;
+  height: 80vh;
+  background-color: #fefeff;
+  border-radius: 2em;
+  border: 5px solid black;
+}
+
+.graphic {
+  width: 40vw;
+  height: 70%;
+  border-radius: 2em;
+  margin-left: 1.5em;
+  border: solid;
+  background-color: #000101;
+}
+
+.graphic h3 {
+  font-weight: lighter;
+  font-size: 300%;
+  margin-left: 1em;
+  color: #fefeff;
+}
+
+.information {
+  width: 30vw;
+  height: 100%;
+}
+
+.information h4 {
+  font-size: 150%;
+  margin-left: 1em;
+}
+
+.information h5,
+.information p {
+  margin: 0.3em 0;
+  font-size: 110%;
+  margin-left: 1em;
+}
+
+.searchContainer {
+  margin-bottom: 1.5em;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.searchContainer input {
+  width: 80%;
+  background-color: #eff1f9;
+  height: 3em;
+  border-top-left-radius: 2em;
+  border-bottom-left-radius: 2em;
+  border-style: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.searchContainer input::placeholder {
+  color: #6c7687;
+}
+
+.searchContainer button {
+  width: 10%;
+  height: 3em;
+  background-color: #eff1f9;
+  border-top-right-radius: 2em;
+  border-bottom-right-radius: 2em;
+  border-style: none;
+}
+
+.coins {
+  margin: 0 1em;
+  height: 60%;
+  overflow: auto;
+  border-top: solid #eff1f9;
+}
+
+.coins::-webkit-scrollbar {
+  display: none;
+}
+
+.infoContainer {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 100%;
+  height: min-content;
+}
+
+.logoContainer {
+  display: grid;
+  place-items: center;
+  width: 10%;
+  height: 10%;
+}
+
+.coinLogo {
+  width: 100%;
+  height: 100%;
+}
+
+.nameValue {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
