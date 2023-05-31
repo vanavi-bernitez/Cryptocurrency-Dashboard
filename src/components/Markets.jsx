@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import { getMarket } from "../helpers/getCrypto";
 
 const Markets = () => {
@@ -13,8 +12,11 @@ const Markets = () => {
   };
 
   const handleOnClickImage = (event) => {
-    setCoinId(event.target.id);
-    console.log(coinId);
+    const clickedImageId = event.target.getAttribute('id');
+    console.log(clickedImageId)
+    // setCoinId((prevImageId) => clickedImageId);
+    // console.log(clickedImageId); //current value 
+    //TODO: graph funtion?
   };
 
   if (data.length === 0) fillCoinCard();
@@ -25,7 +27,7 @@ const Markets = () => {
         <div className="logoContainer">
           <img
             className="coinLogo"
-            id={`${coin.symbol}`}
+            id={`${coin.id}`}
             src={coin.image}
             alt="crypto symbol"
             onClick={handleOnClickImage}

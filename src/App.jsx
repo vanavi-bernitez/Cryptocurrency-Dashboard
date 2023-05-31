@@ -4,6 +4,9 @@ import { Markets } from "./components/Markets";
 import { Search } from "./components/Search";
 
 function App() {
+  
+
+
   return (
     <div className="App">
       <div className="graphic">
@@ -15,8 +18,7 @@ function App() {
         <Search />
         <h5>CRYPTOCURRENCY</h5>
         <p>Details</p>
-
-        {/* <Markets /> */}
+        <Markets />
       </div>
     </div>
   );
