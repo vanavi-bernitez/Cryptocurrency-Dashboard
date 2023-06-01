@@ -1,10 +1,9 @@
 import React from "react";
 
-const SearchedMarkets = ({ queriedData }) => {
+const SearchedMarkets = ({ queriedData, onIdChange }) => {
   const handleOnClickImage = (event) => {
     const clickedImageId = event.target.getAttribute("id");
-    console.log(clickedImageId);
-  
+    onIdChange(clickedImageId);
   };
   const coinItems = queriedData.map((coin) => {
     return (

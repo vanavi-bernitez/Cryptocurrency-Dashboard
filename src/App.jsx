@@ -3,11 +3,13 @@ import "./App.css";
 import { Markets } from "./components/Markets";
 import { Search } from "./components/Search";
 import { SearchedMarkets } from "./components/SearchedMarkets";
+import { GraphCurrency } from "./components/GraphCurrency";
 
 function App() {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [isSearch, setIsSearch] = useState(false);
+  const [coinId, setCoinId] = useState(null);
 
   const handleDataChange = (newData) => {
     setData(newData);
@@ -15,34 +17,39 @@ function App() {
 
   const handleSearchChange = (queryData) => {
     setFilteredData(queryData);
-    // console.log("outer", queryData);
-    console.log("OUTER", filteredData);
   };
 
   const handleSearchActive = (isSearchActive) => {
     setIsSearch(isSearchActive);
-    console.log(isSearch);
   };
+
+  const handleIdCapture = (idCoin) => {
+    setCoinId(idCoin)
+    console.log("outer",coinId);
+  }
 
   return (
     <div className="App">
       <div className="graphic">
         <h3>Sales Activity</h3>
-        <p>Graph</p>
+        <div className="graphPrice">
+        <GraphCurrency initialData={data[0]}  idGraph={coinId} />
+        
+        </div>
+        
       </div>
       <div className="information">
         <h4>Control panel</h4>
         <Search
-          data={data}
           onSearchChange={handleSearchChange}
           onSearchActive={handleSearchActive}
         />
         <h5>CRYPTOCURRENCY</h5>
         <p>Details</p>
         {isSearch ? (
-          <SearchedMarkets queriedData={filteredData} />
+          <SearchedMarkets queriedData={filteredData} onIdChange={handleIdCapture} />
         ) : (
-          <Markets onDataChange={handleDataChange} />
+          <Markets onDataChange={handleDataChange} onIdChange={handleIdCapture} />
         )}
       </div>
     </div>

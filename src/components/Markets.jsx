@@ -1,23 +1,19 @@
 import React, { useState } from "react";
 import { getMarket } from "../helpers/getCrypto";
 
-const Markets = ({ onDataChange }) => {
+const Markets = ({ onDataChange, onIdChange }) => {
   const [data, setData] = useState([]);
-  const [coinId, setCoinId] = useState("");
 
   const fillCoinCard = async () => {
     const coinsData = await getMarket();
     setData(coinsData);
-    onDataChange(coinsData);  //OUTER VALUE
+    onDataChange(coinsData);
     console.log(data.sparkline);
   };
 
   const handleOnClickImage = (event) => {
     const clickedImageId = event.target.getAttribute("id");
-    console.log(clickedImageId);
-    // setCoinId((prevImageId) => clickedImageId);
-    // console.log(clickedImageId); //current value
-    //TODO: graph funtion?
+    onIdChange(clickedImageId);
   };
 
   if (data.length === 0) fillCoinCard();
