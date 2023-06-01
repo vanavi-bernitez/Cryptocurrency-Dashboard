@@ -1,8 +1,7 @@
+const queryCoin = (data, inputQuery) => {
+  return data.filter((coinData) =>
+    coinData.name.toLowerCase().startsWith(inputQuery.toLowerCase())
+  );
+};
 
-const queryCoin = (data) => {
-
-    
-
-}
-
-return {queryCoin}
+export { queryCoin };

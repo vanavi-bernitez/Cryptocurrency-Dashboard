@@ -1,16 +1,21 @@
 import React, { useState } from "react";
 import searchIcon from "../images/search.svg";
+import { queryCoin } from "../helpers/queryCoin";
 
-const Search = () => {
-  const [inputSearch, setInputSearch] = useState('');
+const Search = ({ data, onSearchChange, onSearchActive }) => {
+  const [inputSearch, setInputSearch] = useState("");
 
   const handleOnChange = (event) => {
     setInputSearch(event.target.value);
   };
 
   const handleOnClick = () => {
-    console.log(inputSearch);
-    setInputSearch('');
+    const queryData = queryCoin(data, inputSearch);
+    onSearchChange(queryData);
+    onSearchActive(true)
+  
+    // console.log(queryData);
+    setInputSearch("");
   };
 
   return (
