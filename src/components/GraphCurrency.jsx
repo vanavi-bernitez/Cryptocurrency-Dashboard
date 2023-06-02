@@ -10,6 +10,7 @@ const GraphCurrency = ({ initialData, idGraph }) => {
   const fillGraph = async (idCoinToGraph) => {
     const coinQueryData = await getQueriedCrypto(idCoinToGraph);
     setIdCoinData(coinQueryData);
+    console.log(coinQueryData);
   };
 
   useEffect(() => {
@@ -22,7 +23,6 @@ const GraphCurrency = ({ initialData, idGraph }) => {
     <div className="graphicContainer">
       <VictoryChart domain={{ x: [0, 50] }} width={700} height={300}>
         <VictoryAxis dependentAxis={false} />
-
         <VictoryBar
           style={{ data: { fill: "#5f606c" } }}
           data={formatedData?.sparkline}
