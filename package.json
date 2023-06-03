@@ -35,5 +35,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "Crypto dashboard",
+  "main": "index.jsx",
+  "repository": "https://github.com/vanavi-bernitez/workshop3.git",
+  "author": "Viviana Benitez <viviana.bernitez@gmail.com>",
+  "license": "MIT"
 }
