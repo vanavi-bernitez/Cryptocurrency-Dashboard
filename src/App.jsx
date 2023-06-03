@@ -31,10 +31,8 @@ function App() {
     <div className="App">
       <div className="graphic">
         <h3>Sales Activity</h3>
-        <div className="graphPrice">
+       
         <GraphCurrency initialData={data}  idGraph={coinId} />
-        
-        </div>
         
       </div>
       <div className="information">
