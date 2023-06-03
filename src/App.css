@@ -112,6 +112,12 @@ body {
   width: 100%;
   height: min-content;
   margin: 0.5em 0;
+  border-radius: 1em;
+}
+
+.infoContainer:hover {
+  background-color:rgba(239, 241, 249,0.9);
+  cursor: pointer;
 }
 
 .logoContainer {
@@ -149,4 +155,3 @@ body {
   color: #000101;
   font-weight: bold;
 }
-
