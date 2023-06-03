@@ -3,14 +3,13 @@ import { getQueriedCrypto } from "../helpers/getQueriedCrypto";
 import { VictoryBar, VictoryChart, VictoryAxis } from "victory";
 
 const GraphCurrency = ({ initialData, idGraph }) => {
-  const [idCoinData, setIdCoinData] = useState(null);
+  const [idCoinData, setIdCoinData] = useState([]);
   let formatedData;
-  idGraph === null ? (formatedData = initialData) : (formatedData = idCoinData);
+  idGraph === null ? (formatedData = initialData[0]) : (formatedData = idCoinData);
 
   const fillGraph = async (idCoinToGraph) => {
     const coinQueryData = await getQueriedCrypto(idCoinToGraph);
-    setIdCoinData(coinQueryData);
-    console.log(coinQueryData);
+    setIdCoinData(coinQueryData[0]);
   };
 
   useEffect(() => {

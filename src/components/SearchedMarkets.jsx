@@ -1,21 +1,18 @@
 import React from "react";
 
 const SearchedMarkets = ({ queriedData, onIdChange }) => {
-  const handleOnClickImage = (event) => {
-    const clickedImageId = event.target.getAttribute("id");
-    onIdChange(clickedImageId);
+  const handleOnClickImage = (key) => {
+    onIdChange(key);
   };
   const coinItems = queriedData.map((coin) => {
     return (
-      <div className="infoContainer">
+      <div
+        className="infoContainer"
+        key={coin.id}
+        onClick={() => handleOnClickImage(coin.id)}
+      >
         <div className="logoContainer">
-          <img
-            className="coinLogo"
-            id={`${coin.id}`}
-            src={coin.image}
-            alt="crypto symbol"
-            onClick={handleOnClickImage}
-          />
+          <img className="coinLogo" src={coin.image} alt="crypto symbol" />
         </div>
 
         <div className="coinInformation">

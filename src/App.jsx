@@ -25,7 +25,6 @@ function App() {
 
   const handleIdCapture = (idCoin) => {
     setCoinId(idCoin)
-    console.log("outer",coinId);
   }
 
   return (
@@ -33,7 +32,7 @@ function App() {
       <div className="graphic">
         <h3>Sales Activity</h3>
         <div className="graphPrice">
-        <GraphCurrency initialData={data[0]}  idGraph={coinId} />
+        <GraphCurrency initialData={data}  idGraph={coinId} />
         
         </div>
         
@@ -49,7 +48,7 @@ function App() {
         {isSearch ? (
           <SearchedMarkets queriedData={filteredData} onIdChange={handleIdCapture} />
         ) : (
-          <Markets onDataChange={handleDataChange} onIdChange={handleIdCapture} />
+          <Markets data={data} onDataChange={handleDataChange} onIdChange={handleIdCapture} />
         )}
       </div>
     </div>

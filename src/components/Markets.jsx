@@ -1,34 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 import { getMarket } from "../helpers/getCrypto";
 
-const Markets = ({ onDataChange, onIdChange }) => {
-  const [data, setData] = useState([]);
-
+const Markets = ({ onDataChange, onIdChange, data }) => {
   const fillCoinCard = async () => {
     const coinsData = await getMarket();
-    setData(coinsData);
     onDataChange(coinsData);
-    console.log(data.sparkline);
   };
 
-  const handleOnClickImage = (event) => {
-    const clickedImageId = event.target.getAttribute("id");
-    onIdChange(clickedImageId);
+  const handleOnClickImage = (key) => {
+    onIdChange(key);
   };
 
   if (data.length === 0) fillCoinCard();
 
   const coinItems = data.map((coin) => {
     return (
-      <div className="infoContainer">
+      <div
+        className="infoContainer"
+        key={coin.id}
+        onClick={() => handleOnClickImage(coin.id)}
+      >
         <div className="logoContainer">
-          <img
-            className="coinLogo"
-            id={`${coin.id}`}
-            src={coin.image}
-            alt="crypto symbol"
-            onClick={handleOnClickImage}
-          />
+          <img className="coinLogo" src={coin.image} alt="crypto symbol" />
         </div>
 
         <div className="coinInformation">
