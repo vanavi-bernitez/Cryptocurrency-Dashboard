@@ -21,8 +21,6 @@ const GraphCurrency = ({ initialData, idGraph }) => {
     setAverageY(coinQueryData[0].averageY);
   };
 
-  console.log(formatedData?.sparkline);
-
   useEffect(() => {
     if (idGraph) {
       fillGraph(idGraph);
@@ -96,7 +94,7 @@ const GraphCurrency = ({ initialData, idGraph }) => {
         />
       </VictoryChart>
 
-      <p id="graphPrice">{formatedData?.price}</p>
+      <p id="graphPrice">{formatedData?.price} </p>
     </div>
   );
 };
