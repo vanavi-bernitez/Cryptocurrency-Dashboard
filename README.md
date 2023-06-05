@@ -44,6 +44,12 @@ To run the project locally, execute the following command:
 ```
 yarn start
 ```
+### App normal view
+![WhatsApp Image 2023-06-05 at 4 51 09 PM](https://github.com/vanavi-bernitez/Cryptocurrency-Dashboard/assets/115891257/c98a1099-466d-4264-ad88-99bb900f5b06)
+
+### App responsive view
+![WhatsApp Image 2023-06-05 at 4 51 37 PM](https://github.com/vanavi-bernitez/Cryptocurrency-Dashboard/assets/115891257/df95f78c-75c0-4361-a31c-616bf4f34d19)
+
 
 This will start the development server and the crypto currency dashboard will be accessible at http://localhost:3000 in the browser.
 
