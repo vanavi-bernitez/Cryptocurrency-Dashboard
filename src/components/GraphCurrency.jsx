@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { getQueriedCrypto } from "../helpers/getQueriedCrypto";
-import { VictoryBar, VictoryChart, VictoryAxis } from "victory";
+import { VictoryBar, VictoryChart, VictoryAxis, VictoryLine } from "victory";
 
 const GraphCurrency = ({ initialData, idGraph }) => {
   const [idCoinData, setIdCoinData] = useState([]);
+  const [minY, setMinY] = useState(26000);
+  const [maxY, setMaxY] = useState(29000);
+  const [averageY, setAverageY] = useState(27300);
+
   let formatedData;
   idGraph === null
     ? (formatedData = initialData[0])
@@ -12,6 +16,9 @@ const GraphCurrency = ({ initialData, idGraph }) => {
   const fillGraph = async (idCoinToGraph) => {
     const coinQueryData = await getQueriedCrypto(idCoinToGraph);
     setIdCoinData(coinQueryData[0]);
+    setMinY(coinQueryData[0].minY);
+    setMaxY(coinQueryData[0].maxY);
+    setAverageY(coinQueryData[0].averageY);
   };
 
   useEffect(() => {
@@ -23,7 +30,7 @@ const GraphCurrency = ({ initialData, idGraph }) => {
   return (
     <div className="graphicContainer">
       <VictoryChart
-        domain={{ x: [0, 35] }}
+        domain={{ x: [0, 35], y: [minY, maxY] }}
         width={700}
         height={300}
         events={[
@@ -59,7 +66,13 @@ const GraphCurrency = ({ initialData, idGraph }) => {
           },
         ]}
       >
-        <VictoryAxis dependentAxis={false} />
+        <VictoryAxis
+          orientation="top"
+          tickValues={[0, 7, 14, 21, 28, 35]}
+          tickFormat={["+ w1", "+ w2", "+w3", "+w4", "+ w5"]}
+          style={{axis: {stroke: '#5e5f5e', strokeDasharray: "4" }}}
+        />
+        {/* <VictoryAxis dependentAxis domain={[25000, 27000]} /> */}
         <VictoryBar
           name="barChart"
           barWidth={5}
@@ -71,8 +84,17 @@ const GraphCurrency = ({ initialData, idGraph }) => {
             },
           }}
         />
+
+        <VictoryLine
+          data={[
+            { x: formatedData?.sparkline[0].x, y: averageY },
+            { x: formatedData?.sparkline[35].x, y: averageY },
+          ]}
+          style={{ data: { stroke: "#c1ee14", strokeDasharray: "4" } }}
+        />
       </VictoryChart>
-      <p id="graphPrice">{formatedData?.price}</p>
+
+      <p id="graphPrice">{formatedData?.price} </p>
     </div>
   );
 };

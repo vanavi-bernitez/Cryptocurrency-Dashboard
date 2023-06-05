@@ -10,6 +10,12 @@ const getQueriedCrypto = async (inputQuery) => {
       const formatedSparkline = coin.sparkline_in_7d.price.map(
         (price, index) => ({ x: index, y: price })
       );
+      const maxY = Math.max(...coin.sparkline_in_7d.price);
+      const minY = Math.min(...coin.sparkline_in_7d.price);
+      const averageY =
+        formatedSparkline.reduce((sum, point) => sum + point.y, 0) /
+        formatedSparkline.length;
+
       return {
         id: coin.id,
         symbol: coin.symbol,
@@ -17,6 +23,9 @@ const getQueriedCrypto = async (inputQuery) => {
         image: coin.image,
         price: coin.current_price,
         sparkline: formatedSparkline,
+        maxY,
+        minY,
+        averageY,
       };
     });
 
