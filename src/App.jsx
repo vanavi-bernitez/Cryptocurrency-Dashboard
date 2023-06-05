@@ -24,16 +24,19 @@ function App() {
   };
 
   const handleIdCapture = (idCoin) => {
-    setCoinId(idCoin)
-  }
+    setCoinId(idCoin);
+  };
 
   return (
     <div className="App">
       <div className="graphic">
         <h3>Sales Activity</h3>
-       
-        <GraphCurrency initialData={data}  idGraph={coinId} />
-        
+        <p id="description">
+          Here you can compare sales channel to determine the most effective
+          channels and develop a sales strategy based on this data.
+        </p>
+
+        <GraphCurrency initialData={data} idGraph={coinId} />
       </div>
       <div className="information">
         <h4>Control panel</h4>
@@ -44,9 +47,16 @@ function App() {
         <h5>CRYPTOCURRENCY</h5>
         <p>Details</p>
         {isSearch ? (
-          <SearchedMarkets queriedData={filteredData} onIdChange={handleIdCapture} />
+          <SearchedMarkets
+            queriedData={filteredData}
+            onIdChange={handleIdCapture}
+          />
         ) : (
-          <Markets data={data} onDataChange={handleDataChange} onIdChange={handleIdCapture} />
+          <Markets
+            data={data}
+            onDataChange={handleDataChange}
+            onIdChange={handleIdCapture}
+          />
         )}
       </div>
     </div>
