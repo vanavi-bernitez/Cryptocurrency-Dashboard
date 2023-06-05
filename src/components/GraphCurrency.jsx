@@ -5,8 +5,8 @@ import { VictoryBar, VictoryChart, VictoryAxis, VictoryLine } from "victory";
 const GraphCurrency = ({ initialData, idGraph }) => {
   const [idCoinData, setIdCoinData] = useState([]);
   const [minY, setMinY] = useState(26000);
-  const [maxY, setMaxY] = useState(29000);
-  const [averageY, setAverageY] = useState(27300);
+  const [maxY, setMaxY] = useState(26700);
+  const [averageY, setAverageY] = useState(26300);
 
   let formatedData;
   idGraph === null
@@ -70,9 +70,8 @@ const GraphCurrency = ({ initialData, idGraph }) => {
           orientation="top"
           tickValues={[0, 7, 14, 21, 28, 35]}
           tickFormat={["+ w1", "+ w2", "+w3", "+w4", "+ w5"]}
-          style={{axis: {stroke: '#5e5f5e', strokeDasharray: "4" }}}
+          style={{ axis: { stroke: "#757575", strokeDasharray: "4" } }}
         />
-        {/* <VictoryAxis dependentAxis domain={[25000, 27000]} /> */}
         <VictoryBar
           name="barChart"
           barWidth={5}
@@ -84,7 +83,6 @@ const GraphCurrency = ({ initialData, idGraph }) => {
             },
           }}
         />
-
         <VictoryLine
           data={[
             { x: formatedData?.sparkline[0].x, y: averageY },
@@ -94,7 +92,7 @@ const GraphCurrency = ({ initialData, idGraph }) => {
         />
       </VictoryChart>
 
-      <p id="graphPrice">{formatedData?.price} </p>
+      <h6 id="graphPrice">{formatedData?.price} USD</h6>
     </div>
   );
 };
