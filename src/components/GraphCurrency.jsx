@@ -4,9 +4,9 @@ import { VictoryBar, VictoryChart, VictoryAxis, VictoryLine } from "victory";
 
 const GraphCurrency = ({ initialData, idGraph }) => {
   const [idCoinData, setIdCoinData] = useState([]);
-  const [minY, setMinY] = useState(26000);
-  const [maxY, setMaxY] = useState(26700);
-  const [averageY, setAverageY] = useState(26300);
+  const [minY, setMinY] = useState(25000);
+  const [maxY, setMaxY] = useState(28000);
+  const [averageY, setAverageY] = useState(27050);
 
   let formatedData;
   idGraph === null
@@ -31,8 +31,8 @@ const GraphCurrency = ({ initialData, idGraph }) => {
     <div className="graphicContainer">
       <VictoryChart
         domain={{ x: [0, 35], y: [minY, maxY] }}
-        width={700}
-        height={300}
+        width={750}
+        height={400}
         events={[
           {
             childName: ["barChart"],
@@ -86,7 +86,7 @@ const GraphCurrency = ({ initialData, idGraph }) => {
         <VictoryLine
           data={[
             { x: formatedData?.sparkline[0].x, y: averageY },
-            { x: formatedData?.sparkline[35].x, y: averageY },
+            { x: formatedData?.sparkline[35].x, y: averageY},
           ]}
           style={{ data: { stroke: "#c1ee14", strokeDasharray: "4" } }}
         />
