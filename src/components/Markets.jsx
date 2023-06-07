@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { getMarket } from "../helpers/getCrypto";
 
 const Markets = ({ onDataChange, onIdChange, data }) => {
+  const [innerData, setInnerData] = useState([])
   const fillCoinCard = async () => {
     const coinsData = await getMarket();
     onDataChange(coinsData);
+    setInnerData(coinsData)
   };
 
   const handleOnClickImage = (key) => {
     onIdChange(key);
   };
 
-  if (data.length === 0) fillCoinCard();
+  if (innerData.length === 0) fillCoinCard();
 
   const coinItems = data.map((coin) => {
     return (
