@@ -23,7 +23,6 @@ const getMarket = async () => {
         image: coin.image,
         price: coin.current_price,
         sparkline: formatedSparkline,
-        test: coin.sparkline_in_7d,
         maxY,
         minY,
         averageY,

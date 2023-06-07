@@ -4,30 +4,37 @@ import { VictoryBar, VictoryChart, VictoryAxis, VictoryLine } from "victory";
 
 const GraphCurrency = ({ initialData, idGraph }) => {
   const [idCoinData, setIdCoinData] = useState([]);
-  const [averageY, setAverageY] = useState(27050);
+  const [averageY, setAverageY] = useState(26500);
+
+  const [minYValue, setMinYValue] = useState(25500);
+  const [maxYValue, setMaxYValue] = useState(28000);
+  
+  // console.log(initialData[0].maxY, initialData[0].minY);
 
   let formatedData;
-  idGraph === null
-    ? (formatedData = initialData[0])
-    : (formatedData = idCoinData);
-
-  const fillGraph = async (idCoinToGraph) => {
-    const coinQueryData = await getQueriedCrypto(idCoinToGraph);
-    setIdCoinData(coinQueryData[0]);
-    setAverageY(formatedData?.averageY);
-  };
+  idGraph !== null
+    ? (formatedData = idCoinData)
+    : (formatedData = initialData.length >= 0 ? initialData[0] : null);
 
   useEffect(() => {
+    const fillGraph = async () => {
+      const coinQueryData = await getQueriedCrypto(idGraph);
+      setIdCoinData(coinQueryData[0]);
+      setAverageY(coinQueryData[0].averageY);
+      setMinYValue(coinQueryData[0].minY);
+      setMaxYValue(coinQueryData[0].maxY);
+    };
+
     if (idGraph) {
-      fillGraph(idGraph);
+      fillGraph();
     }
   }, [idGraph]);
 
   return (
     <div className="graphicContainer">
       <VictoryChart
-        domainPadding={{ y: 150 }}
-        domain={{ x: [0, 35] }}
+        domainPadding={{ y: 50 }}
+        domain={{ x: [0, 35], y: [minYValue, maxYValue]}}
         width={750}
         height={400}
         events={[
@@ -69,6 +76,15 @@ const GraphCurrency = ({ initialData, idGraph }) => {
           tickFormat={["+ w1", "+ w2", "+w3", "+w4", "+ w5"]}
           style={{ axis: { stroke: "#757575", strokeDasharray: "4" } }}
         />
+
+        <VictoryLine
+          data={[
+            { x: 0, y: averageY },
+            { x: 35, y: averageY },
+          ]}
+          style={{ data: { stroke: "#c1ee14", strokeDasharray: "4" } }}
+        />
+
         <VictoryBar
           name="barChart"
           barWidth={5}
@@ -79,13 +95,6 @@ const GraphCurrency = ({ initialData, idGraph }) => {
               duration: 1000,
             },
           }}
-        />
-        <VictoryLine
-          data={[
-            { x: formatedData?.sparkline[0].x, y: averageY },
-            { x: formatedData?.sparkline[35].x, y: averageY },
-          ]}
-          style={{ data: { stroke: "#c1ee14", strokeDasharray: "4" } }}
         />
       </VictoryChart>
 
