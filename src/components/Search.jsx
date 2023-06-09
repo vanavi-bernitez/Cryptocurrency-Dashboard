@@ -1,23 +1,27 @@
 import React, { useState } from "react";
 import searchIcon from "../images/search.svg";
-import { getQueriedCrypto } from "../helpers/getQueriedCrypto";
+import { getSearch } from "../helpers/getSearch";
 
-const Search = ({ onSearchChange, onSearchActive }) => {
+const Search = ({ onSearchActive, onIdChange }) => {
   const [inputSearch, setInputSearch] = useState("");
 
   const handleOnChange = (event) => {
     setInputSearch(event.target.value);
   };
 
-  const fillCoinCard = async (query) => {
-    const coinsData = await getQueriedCrypto(query);
-    onSearchChange(coinsData);
-    onSearchActive(true);
-    setInputSearch("");
+  const fillSearch = async (query) => {
+    if (inputSearch === "") {
+      onIdChange(null);
+    } else {
+      const coinsId = await getSearch(query);
+      onIdChange(coinsId);
+    }
   };
 
   const handleOnClick = () => {
-    fillCoinCard(inputSearch);
+    fillSearch(inputSearch);
+    onSearchActive(true);
+    setInputSearch("");
   };
 
   return (
