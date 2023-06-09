@@ -1,5 +1,3 @@
-// import market from "../testData.json";
-
 const getMarket = async () => {
   try {
     const response = await fetch(
@@ -31,7 +29,7 @@ const getMarket = async () => {
 
     return coinsData;
   } catch (error) {
-    console.error("Error while getting cryptos", error);
+    throw new Error('An error occurred during data fetching.');
   }
 };
 

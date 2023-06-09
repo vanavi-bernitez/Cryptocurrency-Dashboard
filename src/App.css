@@ -173,3 +173,14 @@ body {
   text-align: center;
   font-weight: lighter;
 }
+
+.error {
+  display: grid;
+  place-items: center;
+  height: 90vh;
+  width: 90vw;
+}
+
+.error h5 {
+  color: navy;
+}

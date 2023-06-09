@@ -31,7 +31,7 @@ const getQueriedCrypto = async (inputQuery) => {
 
     return coinsData;
   } catch (error) {
-    console.error("Error while getting queried cryptos", error);
+    throw new Error("An error occurred during data fetching.");
   }
 };
 

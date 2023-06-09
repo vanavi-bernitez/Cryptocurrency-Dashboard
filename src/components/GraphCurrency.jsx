@@ -12,9 +12,6 @@ const GraphCurrency = ({
     ? (formatedData = idCoinData)
     : (formatedData = initialData.length >= 0 ? initialData[0] : null);
 
-  // let minGraphY = formatedData?.minY;
-  // console.log(formatedData?.averageY);
-
   return (
     <div className="graphicContainer">
       <VictoryChart
@@ -86,7 +83,11 @@ const GraphCurrency = ({
         />
       </VictoryChart>
 
-      <h6 id="graphPrice">{formatedData?.price} USD</h6>
+      <h6 id="graphPrice">
+        {formatedData?.price}
+        {" "}
+        USD
+      </h6>
     </div>
   );
 };
