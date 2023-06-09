@@ -22,7 +22,7 @@ To get started with the project, follow these steps:
 1. Clone the repository to your local machine:
 
    ```
-   git clone https://github.com/your-username/crypto-dashboard.git
+   git clone https://github.com/vanavi-bernitez/Cryptocurrency-Dashboard
    ```
 
 2. Navigate to the project directory:
