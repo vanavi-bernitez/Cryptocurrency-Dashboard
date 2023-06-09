@@ -45,20 +45,20 @@ body {
 }
 
 .information h4 {
-  font-size: 150%;
-  margin-left: 1em;
+  font-size: 160%;
+  margin-left: 10px;
 }
 
 .information h5 {
   margin: 0.3em 0;
   font-size: 110%;
-  margin-left: 1em;
+  margin-left: 10px;
 }
 
 .information p {
   margin: 0.3em 0;
   font-size: 100%;
-  margin-left: 1em;
+  margin-left: 10px;
 }
 
 .searchContainer {
@@ -69,12 +69,13 @@ body {
 }
 
 .searchContainer input {
-  width: 80%;
+  width: 82%;
   background-color: #eff1f9;
-  height: 3em;
+  height: 3.5em;
   border-top-left-radius: 2em;
   border-bottom-left-radius: 2em;
   border-style: none;
+  padding-left: 1em;
 }
 
 .searchContainer input::placeholder {
@@ -82,8 +83,8 @@ body {
 }
 
 .searchContainer button {
-  width: 10%;
-  height: 3.2em;
+  width: 14%;
+  height: 3.7em;
   background-color: #eff1f9;
   border-top-right-radius: 2em;
   border-bottom-right-radius: 2em;

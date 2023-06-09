@@ -1,40 +1,28 @@
-import React, { useState, useEffect } from "react";
-import { getQueriedCrypto } from "../helpers/getQueriedCrypto";
 import { VictoryBar, VictoryChart, VictoryAxis, VictoryLine } from "victory";
 
-const GraphCurrency = ({ initialData, idGraph }) => {
-  const [idCoinData, setIdCoinData] = useState([]);
-  const [averageY, setAverageY] = useState(26500);
-
-  const [minYValue, setMinYValue] = useState(25500);
-  const [maxYValue, setMaxYValue] = useState(28000);
-  
-  // console.log(initialData[0].maxY, initialData[0].minY);
-
+const GraphCurrency = ({
+  initialData,
+  idGraph,
+  idCoinData,
+  minYValue,
+  maxYValue,
+}) => {
   let formatedData;
   idGraph !== null
     ? (formatedData = idCoinData)
     : (formatedData = initialData.length >= 0 ? initialData[0] : null);
 
-  useEffect(() => {
-    const fillGraph = async () => {
-      const coinQueryData = await getQueriedCrypto(idGraph);
-      setIdCoinData(coinQueryData[0]);
-      setAverageY(coinQueryData[0].averageY);
-      setMinYValue(coinQueryData[0].minY);
-      setMaxYValue(coinQueryData[0].maxY);
-    };
-
-    if (idGraph) {
-      fillGraph();
-    }
-  }, [idGraph]);
+  // let minGraphY = formatedData?.minY;
+  // console.log(formatedData?.averageY);
 
   return (
     <div className="graphicContainer">
       <VictoryChart
         domainPadding={{ y: 50 }}
-        domain={{ x: [0, 35], y: [minYValue, maxYValue]}}
+        domain={{
+          x: [0, 35],
+          y: [minYValue, maxYValue],
+        }}
         width={750}
         height={400}
         events={[
@@ -79,8 +67,8 @@ const GraphCurrency = ({ initialData, idGraph }) => {
 
         <VictoryLine
           data={[
-            { x: 0, y: averageY },
-            { x: 35, y: averageY },
+            { x: 0, y: formatedData?.averageY },
+            { x: 35, y: formatedData?.averageY },
           ]}
           style={{ data: { stroke: "#c1ee14", strokeDasharray: "4" } }}
         />
@@ -92,7 +80,7 @@ const GraphCurrency = ({ initialData, idGraph }) => {
           data={formatedData?.sparkline}
           animate={{
             onExit: {
-              duration: 1000,
+              duration: 300,
             },
           }}
         />
